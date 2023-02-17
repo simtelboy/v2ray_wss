@@ -21,7 +21,7 @@ service v2ray restart
 Hax / Woiden 站长时不时的把机器人验证调得很难，于是续期非常容易失败。
 那么把搭梯子的脚本简单化
 ```
-apt update && apt install -y curl && bash <(curl -L https://github.com/crazypeace/v2ray_wss/raw/main/install.sh) 你的域名 6 你的UUID 你的path
+apt update && apt install -y curl && bash <(curl -L https://github.com/simtelboy/v2ray_wss/raw/main/install.sh) 你的域名 6 你的UUID 你的path
 ```
 跑这条命令之前，把CDN关闭。跑完之后再把CDN打开。
 这样搭出来的梯子，你的翻墙客户端节点信息不用改。
@@ -43,7 +43,7 @@ apt update
 apt install -y curl
 ```
 ```
-bash <(curl -L https://github.com/crazypeace/v2ray_wss/raw/main/install.sh)
+bash <(curl -L https://github.com/simtelboy/v2ray_wss/raw/main/install.sh)
 ```
 
 脚本中很大部分都是在校验用户的输入。其实照着下面的内容自己配置就行了。

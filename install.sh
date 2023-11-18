@@ -84,7 +84,9 @@ apt install -y curl sudo jq qrencode
 echo
 echo -e "$yellow指定安装V2ray v4.45.2版本$none"
 echo "----------------------------------------------------------------"
-bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh) --version 4.45.2
+bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
+#注释掉原来的指定4.45,改为安装最新版
+#bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh) --version 4.45.2
 
 systemctl enable v2ray
 

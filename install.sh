@@ -1,3 +1,7 @@
+#    apt update
+#    apt install -y curl
+#    bash <(curl -L https://github.com/simtelboy/v2ray_wss/raw/main/install.sh)
+
 # 等待1秒, 避免curl下载脚本的打印与脚本本身的显示冲突, 吃掉了提示用户按回车继续的信息
 sleep 1
 

@@ -82,7 +82,8 @@ apt install -y curl sudo jq qrencode
 
 # 指定安装V2ray v4.45.2版本
 echo
-echo -e "$yellow指定安装V2ray v4.45.2版本$none"
+echo -e "$yellow安装最新版V2ray本$none"
+#echo -e "$yellow指定安装V2ray v4.45.2版本$none"
 echo "----------------------------------------------------------------"
 bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 #注释掉原来的指定4.45,改为安装最新版
@@ -102,15 +103,19 @@ sudo apt install caddy
 
 systemctl enable caddy
 
-# 打开BBR
-echo
-echo -e "$yellow打开BBR$none"
-echo "----------------------------------------------------------------"
-sed -i '/net.ipv4.tcp_congestion_control/d' /etc/sysctl.conf
-sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf
-echo "net.ipv4.tcp_congestion_control = bbr" >>/etc/sysctl.conf
-echo "net.core.default_qdisc = fq" >>/etc/sysctl.conf
-sysctl -p >/dev/null 2>&1
+# 询问是否安装 BBR
+read -p "是否安装 BBR？(y/n): " install_bbr
+if [[ $install_bbr == "y" ]]; then
+    # 打开BBR
+    echo
+    echo -e "$yellow打开BBR$none"
+    echo "----------------------------------------------------------------"
+    sed -i '/net.ipv4.tcp_congestion_control/d' /etc/sysctl.conf
+    sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf
+    echo "net.ipv4.tcp_congestion_control = bbr" >>/etc/sysctl.conf
+    echo "net.core.default_qdisc = fq" >>/etc/sysctl.conf
+    sysctl -p >/dev/null 2>&1
+fi
 echo
 
 # 配置 VLESS_WebSocket_TLS 模式, 需要:域名, 分流path, 反代网站, V2ray内部端口, UUID
